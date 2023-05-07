@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 // import jsonwebtoken sbg authorization
 const jwt = require('jsonwebtoken');
 
+// menampilkan semua data user
 async function getUsers(req, res) {
     try {
         const data = await users.findAll();
@@ -20,6 +21,7 @@ async function getUsers(req, res) {
     }
 }
 
+// menampilkan user berdasarkan ID
 async function getUserById(req, res) {
     try {
         // Primary Key = PK
@@ -52,6 +54,7 @@ async function getUserById(req, res) {
 
     }
 }
+
 
 async function editUser(req, res) {
     try {
