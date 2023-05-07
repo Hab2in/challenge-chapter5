@@ -98,20 +98,35 @@ async function createUser(req, res) {
     try {
         const { username, password } = req.body
         
-        // bajuin password nya pake bcrypt / proses enkripsi password
+        // nutupin password nya pake bcrypt / proses enkripsi password
         const hashedPassword = bcrypt.hashSync(password, 10);
-
+        // validasi username sudah ada unique
+        const alreadyName = await users.findOne({
+            where: {
+                username
+            }
+        })
+        // create new username
         const newUser = await users.create({
             username,
             password : hashedPassword,
             role: req.body.role
         })
-        res.status(201).json({
-            status: 'success',
-            data: {
-                user: newUser
-            }
-        })
+
+        if(alreadyName) {
+            res.status(400).json({
+                status: "failed",
+                message: `Username ${username} sudah ada`,
+            });
+        }  else if (newUser) {
+            res.status(201).json({
+                status: 'success',
+                data: {
+                    user: newUser
+                }
+            })
+        }
+
     } catch (err) {
         res.status(400).json({
             status: 'failed',

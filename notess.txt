@@ -21,3 +21,4 @@ postgress lbh cepet dibanding mysql gtu maksudnya mas ? iyaa
 
 Node JS 
 bilang aja baru tau itu dan ingin memperdalam fundamental itu sebelum mencoba yg lainnya, cuma ya sambil bilang karna nodejs lebih mudah nantinya untuk belajar sisi clien
+
